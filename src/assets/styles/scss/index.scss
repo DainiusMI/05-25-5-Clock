@@ -1,3 +1,5 @@
+@use "./_AdjustClock";
+
 
 @mixin flex($direction, $align, $justify) {
     display: flex;
@@ -5,6 +7,8 @@
     align-items: $align;
     justify-content: $justify;
 }
+
+
 
 * {
     box-sizing: border-box;
@@ -18,65 +22,4 @@
 .app {
     @include flex(row, center, center);
     gap: 1rem
-}
-
-.setup__container {
-
-    @include flex(column, center, center);
-    
-    --container__width: 12rem;
-    --container__heigth: calc(var(--container__width) * .3);
-
-    --background__color: silver;
-
-    width: var(--container__width);    
-    height: var(--container__heigth);
-
-    background-color: var(--background__color);
-    border-radius: 100vw;
-
-    position: relative;
-    
-    .label {
-        text-transform: capitalize;
-        font-size: .8rem;
-        position: absolute;
-
-        top: .2rem;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .setup__row {
-        
-        .value {
-
-            font-size: 2rem;
-            font-weight: 700;
-
-            position: absolute;
-            bottom: .2rem;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        button {
-            width: calc(var(--container__heigth) - .1rem);
-            aspect-ratio: 1 / 1;
-
-            font-size: 2rem;
-            background-color: var(--background__color);
-
-            border-radius: 50%;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        :first-child {
-            left: -.05rem;
-        }
-        :last-child {
-            right: -.05rem;
-        }
-    }
-
 }

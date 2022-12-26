@@ -1,21 +1,4 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-.app {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
-
 .setup__container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   --container__width: 12rem;
   --container__heigth: calc(var(--container__width) * .3);
   --background__color: silver;
@@ -56,4 +39,17 @@
 }
 .setup__container .setup__row :last-child {
   right: -0.05rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.app {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }/*# sourceMappingURL=index.css.map */

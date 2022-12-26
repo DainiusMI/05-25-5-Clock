@@ -1,7 +1,7 @@
 import React from "react";
 
 
-export default function SetupContainer(props) {
+export default function AdjustClock(props) {
     const {name, clockSettings, setClockSettings} = props
 
     function mutateSettings(event) {
