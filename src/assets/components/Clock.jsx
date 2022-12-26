@@ -3,6 +3,14 @@ import React from "react";
 export default function Clock(props) {
     const {clockState, setClockState, setClockSettings, defaultSettings} = props
 
+    function runClock() {
+
+        setClockState(prevState => ({
+                ...prevState,
+                isRunning: !prevState.isRunning
+            })
+        )
+    }
 
     return (
         <section className="clock">
@@ -11,10 +19,8 @@ export default function Clock(props) {
             <button 
                 id="start_stop"
                 className={clockState.isRunning === true ? "fa-solid fa-pause" : "fa-solid fa-play"}
-                
+                onClick={runClock}
             ></button>
-
-
             <button
                 id="reset" 
                 className="fa-solid fa-arrows-rotate"

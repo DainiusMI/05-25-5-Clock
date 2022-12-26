@@ -18,19 +18,26 @@ export default function App() {
     isRunning: false  
   })
 
+  const [clock, setClock] = React.useState({
+    display: clockSettings.session
+  })
+
   return (
     <main className="app">
 
-      <AdjustClock  
-        name="break" 
-        clockSettings={clockSettings}
-        setClockSettings={setClockSettings}
-      />
-      <AdjustClock  
-        name="session" 
-        clockSettings={clockSettings}
-        setClockSettings={setClockSettings}
-      />
+      <div className="adjustments__row">
+        {
+          Object.keys(clockSettings).map((key) => {
+            return <AdjustClock
+                      key={key}  
+                      name={key} 
+                      clockSettings={clockSettings}
+                      setClockSettings={setClockSettings}
+                      clockState={clockState}
+                    />
+          })
+        }
+      </div>
 
       <Clock 
         clockState={clockState}
@@ -43,3 +50,19 @@ export default function App() {
     </main>
   )
 }
+
+
+/*
+        <AdjustClock  
+          name="break" 
+          clockSettings={clockSettings}
+          setClockSettings={setClockSettings}
+          clockState={clockState}
+        />
+        <AdjustClock  
+          name="session" 
+          clockSettings={clockSettings}
+          setClockSettings={setClockSettings}
+          clockState={clockState}
+        />
+*/

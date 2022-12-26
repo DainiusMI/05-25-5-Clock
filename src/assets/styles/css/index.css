@@ -41,6 +41,13 @@
   right: -0.05rem;
 }
 
+.clock {
+  width: 50vw;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  border: 0.5rem solid silver;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -48,8 +55,15 @@
 
 .app {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1rem;
+}
+
+.adjustments__row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }/*# sourceMappingURL=index.css.map */
