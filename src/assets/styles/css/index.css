@@ -27,12 +27,19 @@
 .setup__container .setup__row button {
   width: calc(var(--container__heigth) - 0.1rem);
   aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 2rem;
   background-color: var(--background__color);
+  cursor: pointer;
   border-radius: 50%;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+}
+.setup__container .setup__row button:active {
+  font-size: 1.8rem;
 }
 .setup__container .setup__row :first-child {
   left: -0.05rem;
@@ -66,4 +73,11 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+
+p {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }/*# sourceMappingURL=index.css.map */

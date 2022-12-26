@@ -14,13 +14,23 @@ export default function App() {
   }
   const [clockSettings, setClockSettings] = React.useState(defaultSettings)
 
-  const [clockState, setClockState] = React.useState({
-    isRunning: false  
-  })
+  function defaultState() {
+    return {
+      display: "",
+      breakTime: false,
+      isRunning: false
+    }
+  }
+  const [clockState, setClockState] = React.useState(defaultState)
+  React.useEffect(() => {
+    setClockState(prevState => ({
+      ...prevState,
+      display: clockSettings.session > 9 ?
+        `${clockSettings.session}:00` :
+        `0${clockSettings.session}:00` 
+    }))
+  }, [clockSettings])
 
-  const [clock, setClock] = React.useState({
-    display: clockSettings.session
-  })
 
   return (
     <main className="app">
@@ -28,7 +38,7 @@ export default function App() {
       <div className="adjustments__row">
         {
           Object.keys(clockSettings).map((key) => {
-            return <AdjustClock
+            return  <AdjustClock
                       key={key}  
                       name={key} 
                       clockSettings={clockSettings}
@@ -42,7 +52,9 @@ export default function App() {
       <Clock 
         clockState={clockState}
         setClockState={setClockState}
-
+        defaultState={defaultState}
+        
+        clockSettings={clockSettings}
         setClockSettings={setClockSettings}
         defaultSettings={defaultSettings}
       />

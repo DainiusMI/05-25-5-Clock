@@ -39,13 +39,25 @@
             width: calc(var(--container__heigth) - .1rem);
             aspect-ratio: 1 / 1;
 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
             font-size: 2rem;
             background-color: var(--background__color);
+
+            cursor: pointer;
 
             border-radius: 50%;
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
+        }
+        button:hover {
+   
+        }
+        button:active {
+            font-size: 1.8rem;
         }
         :first-child {
             left: -.05rem;
