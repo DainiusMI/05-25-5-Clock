@@ -13,19 +13,27 @@ export default function SetupContainer(props) {
     }
 
     return (
-        <section className={`${name}-container`}>
-            <p id={`${name}-label`}>{name} Length</p>
-            <p id={`${name}-length`}>{clockSettings[name]}</p>
-            <button 
-                id={`${name}-decrement`}
-                value={-1}
-                onClick={mutateSettings}
-            >decrement</button>
-            <button 
-                id={`${name}-increment`}
-                value={1}
-                onClick={mutateSettings}
-            >increment</button>
+        <section className={`${name}-container setup__container`}>
+            <p id={`${name}-label`} className="label">{name} Length</p>
+
+            <div className="setup__row" >
+
+                <button 
+                    id={`${name}-decrement`}
+                    value={-1}
+                    onClick={mutateSettings}
+                >-</button>
+
+                <p id={`${name}-length`} className="value">{clockSettings[name]}</p>
+
+                <button 
+                    id={`${name}-increment`}
+                    value={1}
+                    onClick={mutateSettings}
+                >+</button>
+
+            </div>
+
 
         </section>
     )

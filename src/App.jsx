@@ -19,6 +19,11 @@ export default function App() {
         clockSettings={clockSettings}
         setClockSettings={setClockSettings}
       />
+      <SetupContainer  
+        name="session" 
+        clockSettings={clockSettings}
+        setClockSettings={setClockSettings}
+      />
 
 
     </main>
