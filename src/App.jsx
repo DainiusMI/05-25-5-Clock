@@ -22,14 +22,7 @@ export default function App() {
     }
   }
   const [clockState, setClockState] = React.useState(defaultState)
-  React.useEffect(() => {
-    setClockState(prevState => ({
-      ...prevState,
-      display: clockSettings.session > 9 ?
-        `${clockSettings.session}:00` :
-        `0${clockSettings.session}:00` 
-    }))
-  }, [clockSettings])
+
 
 
   return (
@@ -53,7 +46,8 @@ export default function App() {
         clockState={clockState}
         setClockState={setClockState}
         defaultState={defaultState}
-        
+
+
         clockSettings={clockSettings}
         setClockSettings={setClockSettings}
         defaultSettings={defaultSettings}
@@ -62,19 +56,3 @@ export default function App() {
     </main>
   )
 }
-
-
-/*
-        <AdjustClock  
-          name="break" 
-          clockSettings={clockSettings}
-          setClockSettings={setClockSettings}
-          clockState={clockState}
-        />
-        <AdjustClock  
-          name="session" 
-          clockSettings={clockSettings}
-          setClockSettings={setClockSettings}
-          clockState={clockState}
-        />
-*/
