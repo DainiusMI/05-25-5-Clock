@@ -99,19 +99,26 @@ export default function Clock(props) {
                 <p id="time-left">{clockState.display}</p>
             </div>
 
-            <div className="button__container">
-                <button 
-                    id="start_stop"
-                    className={clockState.isRunning === true ? "fa-solid fa-pause pause" : "fa-solid fa-play run"}
-                    onClick={runClock}
-                ></button>
-                <button
-                    id="reset" 
-                    className="fa-solid fa-arrows-rotate reset"
-                    onClick={resetClock}
-                ></button>
-            </div>
-
+            <div className="button__row">
+                <div className="button__container">
+                        <p>
+                            {clockState.isRunning === true ? "pause" : "run"}
+                        </p>
+                        <button 
+                            id="start_stop"
+                            className={clockState.isRunning === true ? "fa-solid fa-pause pause" : "fa-solid fa-play run"}
+                            onClick={runClock}
+                        ></button>
+                    </div>
+                    <div className="button__container">
+                        <p>reset</p>
+                        <button
+                            id="reset" 
+                            className="fa-solid fa-arrows-rotate reset"
+                            onClick={resetClock}
+                        ></button>
+                    </div>
+                </div>
             <audio id="beep" src="https://codeskulptor-demos.commondatastorage.googleapis.com/descent/gotitem.mp3"/>
         </section>
     )

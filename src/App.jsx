@@ -65,6 +65,7 @@ export default function App() {
     <main className="app">
 
       <div className="settings__container">
+        
         {
           Object.keys(clockSettings).map((key) => {
             return  <AdjustClock

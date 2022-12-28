@@ -10,7 +10,7 @@
     border-radius: 1rem;
 
     @include flex(column, center, flex-start);
-    gap: 1rem;
+    gap: 2rem;
 
     button {
         width: 3rem;
@@ -33,8 +33,7 @@
     width: 20rem;
     height: 8rem;
     @include flex(column, center, center);
-    gap: 1rem;
-
+    gap: .5rem;
     font-size: 2rem;
     font-weight: 600;
     font-family: 'Digital Numbers', sans-serif;
@@ -45,63 +44,37 @@
     border-radius: .5rem;
     box-shadow: inset 0 0 10px #484849;
 }
+.button__row {
+    @include flex(row, center, center);
+    gap: 2rem;
+
+}
 .button__container {
-    width: 80%;
-    @include flex(row, center, space-between);
+    width: 4.5rem;
+    aspect-ratio: 1 / 1;
 
-    button{
-        box-shadow: 0 0 10px #484849;
-    }
-}
-#timer-label {
+    @include flex(row, center, center);
 
-}
-
-#time-left {
-               
-}
-
-
-
-
-
-
-
-.status__container {
-    --font-size:0.8rem;
-    max-width: 9rem;
-    
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-
-    padding: 1rem;
-    border: .05rem solid black;
+    border: 0.07rem solid #eee;
     border-radius: .5rem;
+    
 
-    .title {
-        font-weight: 600;
-    }
-    .status__row {
-        display: flex;
-        gap: .5rem;
+    position: relative;
+    p {
+        background-color: #3D4042;
+        color: #fff;
+        width: 3rem;
 
-        padding-left: 1rem;
-        .indicator {
-            width: var(--font-size);
-            aspect-ratio: 1 / 1;
-            border-radius: 50%;
+        text-align: center;
+        text-transform: capitalize;
+        font-weight: 500;
 
-        }
-        .inactive {
-            background-color: darkgreen;
-        }
-        .active {
-            background-color: lime;
-        }
-        .indicator__description {
-            text-transform: uppercase;
-            font-size: var(--font-size);
-        }
+        position: absolute;
+        top: -.7rem;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
+
+
+

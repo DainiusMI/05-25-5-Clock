@@ -12,10 +12,7 @@ body {
     width: 100vw;
     height: 100vh;
 
-    background: rgb(122,102,136);
-    background: linear-gradient(45deg, rgba(122,102,136,1) 0%, rgba(176,104,104,1) 50%, rgba(182,145,92,1) 100%);
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: #547070;
 
     display: flex;
     align-items: center;
@@ -27,19 +24,19 @@ body {
 }
 .app {
 
-    width: 40rem;
+    max-width: 40rem;
     @include flex(column, center, center);
-    gap: 1rem;
-
-    background: rgb(72,89,100);
-    background: radial-gradient(circle, rgba(72,89,100,1) 1%, rgba(76,79,94,1) 100%);
-
+    gap: 2.5rem;
+    background-color: #3D4042;
+    
+    
     padding: 2rem;
-    border-radius: 3rem;
+    border-radius: .5rem;
+
 }
 .settings__container {
     @include flex(row, center, space-between);
-
+    gap: 1rem;
     width: 100%;
 }
 

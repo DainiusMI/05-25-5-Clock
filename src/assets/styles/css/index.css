@@ -4,27 +4,39 @@
   --background__color: #505053;
   width: var(--container__width);
   height: var(--container__heigth);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   background-color: transparent;
   border-radius: 100vw;
-  border: 0.1rem solid black;
+  border: 0.07rem solid #eee;
   position: relative;
 }
 .setup__container .label {
+  background-color: #3D4042;
+  color: #eee;
+  width: 7rem;
+  text-align: center;
   text-transform: capitalize;
-  font-size: 0.8rem;
+  font-weight: 500;
   position: absolute;
-  top: 0.2rem;
+  top: -0.7rem;
   left: 50%;
   transform: translateX(-50%);
 }
 .setup__container .setup__row .value {
+  width: 5rem;
+  height: 2rem;
+  background: rgb(63, 132, 58);
+  background: linear-gradient(45deg, rgb(63, 132, 58) 0%, rgb(65, 190, 55) 100%);
+  border-radius: 0.5rem;
+  box-shadow: inset 0 0 5px #484849;
   font-family: "Digital Numbers", sans-serif;
+  color: #484849;
   font-size: 1.5rem;
   font-weight: 700;
-  position: absolute;
-  bottom: 0.2rem;
-  left: 50%;
-  transform: translateX(-50%);
+  text-align: center;
 }
 .setup__container .setup__row button {
   width: calc(var(--container__heigth) - 0.1rem);
@@ -35,7 +47,7 @@
   font-size: 2rem;
   font-weight: 700;
   background-color: transparent;
-  color: #fff;
+  color: #eee;
   cursor: pointer;
   border-radius: 50%;
   border: none;
@@ -66,7 +78,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 1rem;
+  gap: 2rem;
 }
 .clock button {
   width: 3rem;
@@ -91,7 +103,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.5rem;
   font-size: 2rem;
   font-weight: 600;
   font-family: "Digital Numbers", sans-serif;
@@ -102,49 +114,36 @@
   box-shadow: inset 0 0 10px #484849;
 }
 
-.button__container {
-  width: 80%;
+.button__row {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-}
-.button__container button {
-  box-shadow: 0 0 10px #484849;
+  justify-content: center;
+  gap: 2rem;
 }
 
-.status__container {
-  --font-size:0.8rem;
-  max-width: 9rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding: 1rem;
-  border: 0.05rem solid black;
-  border-radius: 0.5rem;
-}
-.status__container .title {
-  font-weight: 600;
-}
-.status__container .status__row {
-  display: flex;
-  gap: 0.5rem;
-  padding-left: 1rem;
-}
-.status__container .status__row .indicator {
-  width: var(--font-size);
+.button__container {
+  width: 4.5rem;
   aspect-ratio: 1/1;
-  border-radius: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: 0.07rem solid #eee;
+  border-radius: 0.5rem;
+  position: relative;
 }
-.status__container .status__row .inactive {
-  background-color: darkgreen;
-}
-.status__container .status__row .active {
-  background-color: lime;
-}
-.status__container .status__row .indicator__description {
-  text-transform: uppercase;
-  font-size: var(--font-size);
+.button__container p {
+  background-color: #3D4042;
+  color: #fff;
+  width: 3rem;
+  text-align: center;
+  text-transform: capitalize;
+  font-weight: 500;
+  position: absolute;
+  top: -0.7rem;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 * {
@@ -155,26 +154,22 @@
 body {
   width: 100vw;
   height: 100vh;
-  background: rgb(122, 102, 136);
-  background: linear-gradient(45deg, rgb(122, 102, 136) 0%, rgb(176, 104, 104) 50%, rgb(182, 145, 92) 100%);
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #547070;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .app {
-  width: 40rem;
+  max-width: 40rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  background: rgb(72, 89, 100);
-  background: radial-gradient(circle, rgb(72, 89, 100) 1%, rgb(76, 79, 94) 100%);
+  gap: 2.5rem;
+  background-color: #3D4042;
   padding: 2rem;
-  border-radius: 3rem;
+  border-radius: 0.5rem;
 }
 
 .settings__container {
@@ -182,6 +177,7 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
   width: 100%;
 }
 
