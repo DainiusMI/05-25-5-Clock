@@ -1,30 +1,48 @@
 import React from "react";
-import { useEffect } from "react";
+
 
 export default function Clock(props) {
-    const {clockState, setClockState, 
-        clockSettings, setClockSettings, defaultSettings} = props
+    const {clockState, setClockState, defaultState, clockSettings, setClockSettings, defaultSettings} = props
 
-    const [clockDate, setClockDate] = React.useState({
-        started: new Date(),
-        current: new Date(),
-        nextSecond: "",
-        interval: 1000
-    })
 
     function defaultTimer() {
         return {
-            nextSecond: "",
-            target: clockSettings.session*60,
-            interval: 1000,
+            value: clockState.breakTime === true ?
+            clockSettings.break * 60 :
+            clockSettings.session * 60,
+            interval: 1000
         }
     }
     const [timer, setTimer] = React.useState(defaultTimer)
+    
+    // once settings change reasign timer value ALSO RESETS
+    React.useEffect(() => setTimer(defaultTimer), [clockSettings])
 
+    // once timer runs out change mode
+    React.useEffect(() => {
+        if (timer.value === 0) {
+            setClockState(prevState => ({
+                ...prevState,
+                isSession: !prevState.isSession
+            }))
+        }
+        if (timer.value < 0) {
+            setClockState(prevState => ({
+                ...prevState,
+                breakTime: !prevState.breakTime
+            }))
+            document.getElementById("beep").play()
+        }
 
+    }, [timer.value])
+
+    // once mode changed ajust the timer value for it
+    React.useEffect(() => setTimer(defaultTimer), [clockState.breakTime])
+
+    // update clock display
     React.useEffect(() => {
         let minutes = 0
-        let value = timer.target
+        let value = timer.value
         while (value >= 60) {
             value -=60
             minutes++
@@ -34,19 +52,17 @@ export default function Clock(props) {
             ...prevState,
             display: `${minutes > 9 ? minutes : `0${minutes}`}:${seconds > 9 ? seconds : `0${seconds}`}`
         }))
-    }, [timer.target])
+    }, [timer.value])
 
+
+    // tracks time about every 1 second and subtracts from value
     const tracker = React.useRef()
-    useEffect(() => {
- 
+    React.useEffect(() => {
         if (clockState.isRunning === true) {
             tracker.current = setInterval(() => {
                 setTimer(prevData => ({
-                    nextSecond: prevData.nextSecond !== "" ? 
-                        prevData.nextSecond + 1000 :
-                        Date.now() + 1000,
-                    target: prevData.target - 1,
-                    interval: 2000 + (prevData.nextSecond - Date.now())
+                    ...prevData,
+                    value: prevData.value - 1
                 }))
             }, 1000)
         }
@@ -58,25 +74,26 @@ export default function Clock(props) {
     }, [clockState.isRunning])
 
 
+
     function runClock() {
         setClockState(prevState => ({
                 ...prevState,
                 isRunning: !prevState.isRunning
             })
         )
-        clockState.isRunning === false && setTimer(prevData => ({
-            ...prevData,
-            started: Date.now()
-        }))
     }
     function resetClock() {
         setClockSettings(defaultSettings);
-        setClockState({isRunning: false})
+        setClockState(defaultState)
+        
+        const audio = document.getElementById("beep")
+        audio.pause()
+        audio.src = audio.src
     }
 
     return (
         <section className="clock">
-            <p id="timer-label">Session/Break</p>
+            <p id="timer-label">{clockState.isSession ? "Session" : "Break"}</p>
             <p id="time-left">{clockState.display}</p>
             <button 
                 id="start_stop"
@@ -88,12 +105,10 @@ export default function Clock(props) {
                 className="fa-solid fa-arrows-rotate"
                 onClick={resetClock}
             ></button>
+            <audio id="beep" src="https://codeskulptor-demos.commondatastorage.googleapis.com/descent/gotitem.mp3"/>
         </section>
     )
 }
-
-
-
 
 
 
