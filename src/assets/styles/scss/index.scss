@@ -1,13 +1,6 @@
 @use "./_AdjustClock";
 @use "./_Clock";
-
-@mixin flex($direction, $align, $justify) {
-    display: flex;
-    flex-direction: $direction;
-    align-items: $align;
-    justify-content: $justify;
-}
-
+@use "./mixin" as *;
 
 
 * {
@@ -15,16 +8,39 @@
     margin: 0;
 
 }
+body {
+    width: 100vw;
+    height: 100vh;
 
+    background: rgb(122,102,136);
+    background: linear-gradient(45deg, rgba(122,102,136,1) 0%, rgba(176,104,104,1) 50%, rgba(182,145,92,1) 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
 #root {
 
 }
 .app {
+
+    width: 40rem;
     @include flex(column, center, center);
-    gap: 1rem
+    gap: 1rem;
+
+    background: rgb(72,89,100);
+    background: radial-gradient(circle, rgba(72,89,100,1) 1%, rgba(76,79,94,1) 100%);
+
+    padding: 2rem;
+    border-radius: 3rem;
 }
-.adjustments__row {
-    @include flex(row, center, center);
+.settings__container {
+    @include flex(row, center, space-between);
+
+    width: 100%;
 }
 
 

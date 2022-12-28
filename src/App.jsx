@@ -44,7 +44,7 @@ export default function App() {
   function defaultState() {
     return {
       display: "",
-      isSession: true,
+      sessionTime: true,
       breakTime: false,
       isRunning: false
     }
@@ -64,7 +64,7 @@ export default function App() {
   return (
     <main className="app">
 
-      <div className="adjustments__row">
+      <div className="settings__container">
         {
           Object.keys(clockSettings).map((key) => {
             return  <AdjustClock

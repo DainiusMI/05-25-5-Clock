@@ -1,4 +1,5 @@
 import React from "react";
+import StatusIndicator from "./StatusIndicator";
 
 
 export default function Clock(props) {
@@ -23,7 +24,7 @@ export default function Clock(props) {
         if (timer.value === 0) {
             setClockState(prevState => ({
                 ...prevState,
-                isSession: !prevState.isSession
+                sessionTime: !prevState.sessionTime
             }))
         }
         if (timer.value < 0) {
@@ -93,18 +94,24 @@ export default function Clock(props) {
 
     return (
         <section className="clock">
-            <p id="timer-label">{clockState.isSession ? "Session" : "Break"}</p>
-            <p id="time-left">{clockState.display}</p>
-            <button 
-                id="start_stop"
-                className={clockState.isRunning === true ? "fa-solid fa-pause" : "fa-solid fa-play"}
-                onClick={runClock}
-            ></button>
-            <button
-                id="reset" 
-                className="fa-solid fa-arrows-rotate"
-                onClick={resetClock}
-            ></button>
+            <div className="discplay__container">
+                <p id="timer-label">{clockState.sessionTime ? "Session" : "Break"}</p>
+                <p id="time-left">{clockState.display}</p>
+            </div>
+
+            <div className="button__container">
+                <button 
+                    id="start_stop"
+                    className={clockState.isRunning === true ? "fa-solid fa-pause pause" : "fa-solid fa-play run"}
+                    onClick={runClock}
+                ></button>
+                <button
+                    id="reset" 
+                    className="fa-solid fa-arrows-rotate reset"
+                    onClick={resetClock}
+                ></button>
+            </div>
+
             <audio id="beep" src="https://codeskulptor-demos.commondatastorage.googleapis.com/descent/gotitem.mp3"/>
         </section>
     )
@@ -116,7 +123,17 @@ export default function Clock(props) {
 /*
 
 
-
+            <div className="status__container">
+                <p className="title">Clock status: </p>
+                {
+                    ["running", "session", "break"].map((name, idx) => {
+                    return <StatusIndicator 
+                                key={idx} 
+                                name={name} 
+                                clockState={clockState}
+                    />})
+                }
+            </div>
 
 
     function defaultTimer() {

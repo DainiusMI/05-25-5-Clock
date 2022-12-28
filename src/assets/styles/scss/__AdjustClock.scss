@@ -1,17 +1,19 @@
+@use "./mixin" as *;
+
 
 .setup__container {
     
     --container__width: 12rem;
     --container__heigth: calc(var(--container__width) * .3);
 
-    --background__color: silver;
+    --background__color: #505053;
 
     width: var(--container__width);    
     height: var(--container__heigth);
 
-    background-color: var(--background__color);
+    background-color: transparent;
     border-radius: 100vw;
-
+    border: .1rem solid black;
     position: relative;
     
     .label {
@@ -26,8 +28,8 @@
 
     .setup__row {
         .value {
-
-            font-size: 2rem;
+            font-family: 'Digital Numbers', sans-serif;
+            font-size: 1.5rem;
             font-weight: 700;
 
             position: absolute;
@@ -44,26 +46,28 @@
             justify-content: center;
 
             font-size: 2rem;
-            background-color: var(--background__color);
+            font-weight: 700;
+            background-color: transparent;
+            color: #fff;
 
             cursor: pointer;
 
             border-radius: 50%;
+            border: none;
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-        }
-        button:hover {
-   
-        }
-        button:active {
-            font-size: 1.8rem;
+            &:active {
+                font-size: 1.8rem;
+            }
         }
         :first-child {
             left: -.05rem;
+            color: #A42E2E;
         }
         :last-child {
             right: -.05rem;
+            color: #41BE37;
         }
     }
 
